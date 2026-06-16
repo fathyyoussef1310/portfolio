@@ -1,0 +1,922 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Youssef Fathy - Flutter Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800&amp;family=Inter:wght@400&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#dbe3f0",
+                        "on-secondary": "#2d3136",
+                        "on-tertiary-fixed": "#161b2b",
+                        "secondary": "#c3c7cd",
+                        "on-secondary-fixed-variant": "#43474c",
+                        "inverse-on-surface": "#29313b",
+                        "primary-container": "#fe5641",
+                        "secondary-fixed": "#e0e2e9",
+                        "surface-container": "#182029",
+                        "on-primary-container": "#5c0100",
+                        "on-primary-fixed-variant": "#930200",
+                        "tertiary-fixed": "#dee1f9",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#24293a",
+                        "primary": "#ffb4a8",
+                        "on-primary-fixed": "#410000",
+                        "on-primary": "#680100",
+                        "surface-container-high": "#232b34",
+                        "secondary-container": "#45494f",
+                        "tertiary": "#c1c5dc",
+                        "on-tertiary": "#2b3041",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ffb4a8",
+                        "on-background": "#dbe3f0",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#0c141d",
+                        "surface-bright": "#323a44",
+                        "on-surface": "#dbe3f0",
+                        "on-error": "#690005",
+                        "outline": "#aa8984",
+                        "primary-fixed": "#ffdad4",
+                        "outline-variant": "#5b403c",
+                        "inverse-primary": "#b72215",
+                        "tertiary-fixed-dim": "#c1c5dc",
+                        "on-tertiary-fixed-variant": "#414658",
+                        "on-secondary-container": "#b5b8bf",
+                        "surface-container-highest": "#2e353f",
+                        "surface-container-lowest": "#070f17",
+                        "on-surface-variant": "#e3beb8",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "tertiary-container": "#8b90a5",
+                        "secondary-fixed-dim": "#c3c7cd",
+                        "background": "#0c141d",
+                        "surface-container-low": "#141c25",
+                        "on-secondary-fixed": "#181c21",
+                        "surface": "#0c141d",
+                        "surface-variant": "#2e353f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-desktop": "160px",
+                        "gutter": "24px",
+                        "grid-margin": "24px",
+                        "section-gap-mobile": "80px",
+                        "base": "8px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "display-xl-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "label-mono": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-xl-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #0B1020 0%, #000000 100%);
+            color: #dbe3f0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: rgba(38, 42, 47, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-panel-elevated {
+            background: rgba(38, 42, 47, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Typography Helper Classes */
+        .text-display-xl { font-family: 'Hanken Grotesk', sans-serif; font-size: 72px; line-height: 1.1; letter-spacing: -0.04em; font-weight: 800; }
+        .text-headline-lg { font-family: 'Hanken Grotesk', sans-serif; font-size: 48px; line-height: 1.2; font-weight: 700; }
+        .text-headline-md { font-family: 'Hanken Grotesk', sans-serif; font-size: 32px; line-height: 1.3; font-weight: 600; }
+        .text-body-md { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; font-weight: 400; }
+        .text-display-xl-mobile { font-family: 'Hanken Grotesk', sans-serif; font-size: 40px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 800; }
+        .text-body-lg { font-family: 'Inter', sans-serif; font-size: 18px; line-height: 1.6; font-weight: 400; }
+        .text-label-mono { font-family: 'Geist', monospace; font-size: 14px; line-height: 1.0; letter-spacing: 0.05em; font-weight: 500; }
+
+        /* Custom Accents */
+        .accent-primary { color: #F34E3A; }
+        .bg-accent-primary { background-color: #F34E3A; }
+        .border-accent-primary { border-color: #F34E3A; }
+
+        /* Scroll Progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #F34E3A;
+            z-index: 100;
+            width: 0%;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(243, 78, 58, 0.8);
+        }
+
+        /* Custom Cursor Glow */
+        #cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(243, 78, 58, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+        .btn-primary {
+            background-color: #F34E3A;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(243, 78, 58, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            border: 1px solid #F34E3A;
+            color: #F34E3A;
+            background: transparent;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .btn-ghost:hover {
+            background: rgba(243, 78, 58, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .project-card, .skill-card, .achievement-card, .cert-card {
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .project-card:hover, .skill-card:hover, .achievement-card:hover, .cert-card:hover {
+            border-color: #F34E3A;
+            transform: translateY(-5px);
+        }
+
+        /* Material Symbols Fill override */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        .main-content {
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Nav Link Active State */
+        .nav-link.active {
+            color: #F34E3A;
+            border-right-width: 2px;
+            border-color: #F34E3A;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#F34E3A] selection:text-white">
+<div id="scroll-progress" style="width: 100%;"></div>
+<div id="cursor-glow" style="left: 757px; top: 4745px;"></div>
+<!-- Mobile Top App Bar -->
+<header class="lg:hidden fixed top-0 w-full z-50 border-b border-white/10 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-md flex justify-between items-center px-6 py-4">
+<div class="text-headline-md-mobile font-black text-on-surface">Youssef Fathy</div>
+<div class="flex items-center gap-4">
+<a class="btn-primary text-label-mono px-4 py-2 rounded-DEFAULT active:opacity-80" href="#contact">Hire Me</a>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">menu</span>
+</div>
+</header>
+<!-- Desktop Side Nav Bar -->
+<nav class="fixed left-0 top-0 h-full w-[280px] hidden lg:flex flex-col border-r border-white/10 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl shadow-2xl justify-between py-10 px-6 z-50 overflow-y-auto">
+<div>
+<div class="mb-10 text-center">
+<div class="w-24 h-24 rounded-full glass-panel mx-auto mb-4 overflow-hidden flex items-center justify-center border-accent-primary">
+<img src="C:\Users\fathy\Downloads\Portfolio\assets\WhatsApp Image 2024-10-25 at 4.10.23 PM (1).jpeg">
+</div>
+<h1 class="text-headline-md font-bold text-on-surface dark:text-on-surface mb-1">Youssef Fathy</h1>
+<p class="text-label-mono text-on-surface-variant">Flutter Developer</p>
+</div>
+<ul class="space-y-2">
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent active" data-target="home" href="#home">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-mono">Home</span>
+</a>
+</li>
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent" data-target="about" href="#about">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-mono">About</span>
+</a>
+</li>
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent" data-target="skills" href="#skills">
+<span class="material-symbols-outlined">code</span>
+<span class="text-label-mono">Skills</span>
+</a>
+</li>
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent" data-target="projects" href="#projects">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-label-mono">Projects</span>
+</a>
+</li>
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent" data-target="certificates" href="#certificates">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="text-label-mono">Certificates</span>
+</a>
+</li>
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent" data-target="experience" href="#experience">
+<span class="material-symbols-outlined">work</span>
+<span class="text-label-mono">Experience</span>
+</a>
+</li>
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent" data-target="achievements" href="#achievements">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="text-label-mono">Achievements</span>
+</a>
+</li>
+<li class="">
+<a class="nav-link flex items-center gap-4 py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:text-primary transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer active:scale-95 border-r-0 border-transparent" data-target="contact" href="#contact">
+<span class="material-symbols-outlined">mail</span>
+<span class="text-label-mono">Contact</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="mt-8">
+    <a href="assets/Youssef Fathy_CV-2.pdf"  download 
+   class="w-full btn-ghost py-3 rounded-lg text-label-mono font-bold mb-6 flex items-center justify-center gap-2">
+    Download CV 
+    <span class="material-symbols-outlined text-[18px]">download</span>
+</a>
+<div class="flex justify-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">link</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="lg:ml-[280px] pt-24 lg:pt-0 main-content pb-24 lg:pb-0 px-6 lg:px-12 max-w-[1200px] mx-auto w-full">
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center py-20 relative section-spy" id="home">
+<div class="absolute right-0 top-1/4 w-96 h-96 bg-[#F34E3A]/5 rounded-full blur-[120px] -z-10"></div>
+<div class="max-w-3xl">
+<p class="text-label-mono accent-primary mb-6 animate-fade-up">Hello, World. I am</p>
+<h1 class="text-display-xl-mobile lg:text-display-xl text-on-surface mb-4 animate-fade-up stagger-1">
+                Youssef Fathy Mohamed.
+            </h1>
+<h2 class="text-headline-md lg:text-headline-lg text-on-surface-variant mb-8 animate-fade-up stagger-2">
+                I build high-performance mobile apps.
+            </h2>
+<p class="text-body-lg text-on-surface-variant mb-10 max-w-2xl animate-fade-up stagger-3">
+                A Software Engineer specializing in <span class="accent-primary">Flutter</span>. I engineer scalable, state-driven mobile experiences utilizing Clean Architecture and advanced state management techniques like Bloc. Passionate about delivering pristine UI and robust backend integrations.
+            </p>
+<div class="flex flex-wrap gap-4 animate-fade-up stagger-4">
+<a class="btn-primary text-label-mono px-8 py-4 rounded-DEFAULT inline-flex items-center gap-2" href="#projects">
+                    View Projects <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="btn-ghost text-label-mono px-8 py-4 rounded-DEFAULT inline-flex items-center gap-2" href="#">
+                    Download Resume
+                </a>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap-mobile lg:py-section-gap-desktop relative section-spy" id="about">
+<div class="mb-16 animate-on-scroll animate-fade-up" style="opacity: 0;">
+<h2 class="text-headline-md text-on-surface mb-4 flex items-center gap-4">
+<span class="text-label-mono accent-primary">01.</span> About Me
+                <div class="h-px bg-white/10 flex-1 ml-4"></div>
+</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-on-scroll animate-fade-up" style="opacity: 0;">
+<div class="glass-panel p-8 rounded-xl">
+<p class="text-body-lg text-on-surface-variant mb-6">
+                    Hello! I'm Youssef, a passionate <strong class="text-primary">Flutter Developer</strong> and software engineering enthusiast. My journey into programming started with a fascination for mobile applications and how they connect people globally. 
+                </p>
+<p class="text-body-lg text-on-surface-variant mb-6">
+                    I am a strong advocate for <strong class="text-primary">Clean Architecture</strong>, believing that well-structured, maintainable code is the backbone of any successful application. Beyond coding, I am an experienced <strong class="text-primary">Team Leader</strong> and an active <strong class="text-primary">ICPC Trainer</strong>, where I enjoy mentoring aspiring competitive programmers and refining their problem-solving skills.
+                </p>
+<div class="mt-8 border-l-2 border-primary pl-6">
+<h3 class="text-body-lg font-bold text-on-surface mb-2">Education</h3>
+<p class="text-body-md text-on-surface-variant">Higher Technological Institute (HTI)<br>Computer Engineering</p>
+</div>
+</div>
+<div class="relative w-full aspect-square max-w-md mx-auto group">
+<div class="absolute inset-0 border-2 border-primary rounded-xl translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
+<div class="absolute inset-0 glass-panel-elevated rounded-xl flex items-center justify-center overflow-hidden z-10 group-hover:bg-transparent transition-colors duration-300">
+<div class="w-full h-full bg-surface-container-high flex items-center justify-center group-hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-9xl text-primary/30">terminal</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="py-section-gap-mobile lg:py-section-gap-desktop relative section-spy" id="skills">
+<div class="mb-16 animate-on-scroll animate-fade-up" style="opacity: 0;">
+<h2 class="text-headline-md text-on-surface mb-4 flex items-center gap-4">
+<span class="text-label-mono accent-primary">02.</span> Technical Arsenal
+                <div class="h-px bg-white/10 flex-1 ml-4"></div>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Category 1 -->
+<div class="glass-panel p-6 rounded-xl skill-card animate-on-scroll animate-fade-up h-full" style="opacity: 0;">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">code_blocks</span>
+<h3 class="text-body-lg font-bold text-on-surface">Languages</h3>
+</div>
+<ul class="space-y-2 text-on-surface-variant text-body-md font-medium">
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Dart</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Flutter</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Python</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> C++</li>
+</ul>
+</div>
+<!-- Category 2 -->
+<div class="glass-panel p-6 rounded-xl skill-card animate-on-scroll animate-fade-up h-full" style="opacity: 0;">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">architecture</span>
+<h3 class="text-body-lg font-bold text-on-surface">Architecture</h3>
+</div>
+<ul class="space-y-2 text-on-surface-variant text-body-md font-medium">
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Clean Architecture</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> MVVM</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> MVC</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> SOLID Principles</li>
+</ul>
+</div>
+<!-- Category 3 -->
+<div class="glass-panel p-6 rounded-xl skill-card animate-on-scroll animate-fade-up h-full" style="opacity: 0;">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">account_tree</span>
+<h3 class="text-body-lg font-bold text-on-surface">State Mgmt</h3>
+</div>
+<ul class="space-y-2 text-on-surface-variant text-body-md font-medium">
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Bloc</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Cubit</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> GetX</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Provider</li>
+</ul>
+</div>
+<!-- Category 4 -->
+<div class="glass-panel p-6 rounded-xl skill-card animate-on-scroll animate-fade-up h-full" style="opacity: 0;">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">build</span>
+<h3 class="text-body-lg font-bold text-on-surface">Tools</h3>
+</div>
+<ul class="space-y-2 text-on-surface-variant text-body-md font-medium">
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Git &amp; GitHub</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> VS Code</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Postman</li>
+<li class="flex items-center gap-2"><span class="text-primary text-xs">▹</span> Firebase</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Projects Section (Bento Grid) -->
+<section class="py-section-gap-mobile lg:py-section-gap-desktop relative section-spy" id="projects">
+
+<div class="mb-16 animate-on-scroll animate-fade-up" style="opacity: 0;">
+    <h2 class="text-headline-md text-on-surface mb-4 flex items-center gap-4">
+        <span class="text-label-mono accent-primary">03.</span> Selected Work
+        <div class="h-px bg-white/10 flex-1 ml-4"></div>
+    </h2>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-grid-margin">
+
+<!-- ================= PROJECT 1 ================= -->
+<div class="md:col-span-2 glass-panel rounded-xl overflow-hidden project-card group relative flex flex-col md:flex-row h-auto min-h-[400px] animate-on-scroll animate-fade-up">
+
+    <div class="w-full md:w-1/2 h-64 md:h-auto bg-surface-container-high relative overflow-hidden">
+        <img src="C:\Users\fathy\Downloads\Portfolio\assets\WhatsApp Image 2026-05-13 at 10.46.23 PM.jpeg"
+             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+             alt="HTI LMS Project"/>
+    </div>
+
+    <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+
+        <div class="text-label-mono accent-primary mb-2">Featured Project</div>
+
+        <h3 class="text-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors">
+            HTI-LMS (Team Leader)
+        </h3>
+
+        <div class="glass-panel-elevated p-6 rounded-lg mb-6 text-body-md text-on-surface-variant">
+            A comprehensive Learning Management System built with Flutter. Led a team to implement intricate state management using Bloc, ensuring scalable and clean architecture across the application. Facilitates seamless interaction between students and educational resources.
+        </div>
+
+        <div class="flex gap-4">
+            <a href="https://github.com/Shoky-ORG" target="_blank">
+                <span class="material-symbols-outlined">code</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= PROJECT 2 ================= -->
+<div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col animate-on-scroll animate-fade-up">
+
+<div class="p-8 flex-1 flex flex-col">
+
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl accent-primary">local_hospital</span>
+
+<div class="flex gap-4">
+    <a href="https://github.com/fathyyoussef1310/Healty-Delivery-app2-Word-Of-Mouth-Internship-app-/tree/main" target="_blank">
+        <span class="material-symbols-outlined">code</span>
+    </a>
+    <a href="https://github.com/fathyyoussef1310/Healty-Delivery-app2-Word-Of-Mouth-Internship-app-/tree/main" target="_blank">
+        <span class="material-symbols-outlined">open_in_new</span>
+    </a>
+</div>
+
+</div>
+
+<h3 class="text-headline-md text-on-surface mb-3">Healthy Delivery App</h3>
+
+<p class="text-body-md text-on-surface-variant mb-6 flex-1">
+    Lead UI Developer for a health-focused delivery application. Focused on pixel-perfect implementations, complex animations, and fluid user experiences using advanced Flutter UI techniques.
+</p>
+
+<div class="flex flex-wrap gap-2 mt-auto">
+    <span class="text-label-mono text-secondary text-xs">Flutter</span>
+    <span class="text-label-mono text-secondary text-xs">UI/UX</span>
+    <span class="text-label-mono text-secondary text-xs">Animations</span>
+</div>
+
+</div>
+</div>
+
+<!-- ================= PROJECT 3 ================= -->
+<div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col animate-on-scroll animate-fade-up">
+
+<div class="p-8 flex-1 flex flex-col">
+
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl accent-primary">fitness_center</span>
+
+<div class="flex gap-4">
+    <a href="https://github.com/kassemdiaa/Pharo-fit/tree/development" target="_blank">
+        <span class="material-symbols-outlined">code</span>
+    </a>
+</div>
+</div>
+
+<h3 class="text-headline-md text-on-surface mb-3">PharoFit</h3>
+
+<p class="text-body-md text-on-surface-variant mb-6 flex-1">
+    A fitness tracking application providing personalized workout plans. Implemented state management using MVVM and robust local storage solutions.
+</p>
+
+<div class="flex flex-wrap gap-2 mt-auto">
+    <span class="text-label-mono text-secondary text-xs">Flutter</span>
+    <span class="text-label-mono text-secondary text-xs">MVVM</span>
+    <span class="text-label-mono text-secondary text-xs">SQLite</span>
+</div>
+
+</div>
+</div>
+
+<!-- ================= PROJECT 4 ================= -->
+<div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col animate-on-scroll animate-fade-up">
+
+<div class="p-8 flex-1 flex flex-col">
+
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl accent-primary">storefront</span>
+
+<div class="flex gap-4">
+    <a href="https://github.com/fathyyoussef1310/Dokkana-E-commerce" target="_blank">
+        <span class="material-symbols-outlined">code</span>
+    </a>
+</div>
+</div>
+
+<h3 class="text-headline-md text-on-surface mb-3">Dokkana</h3>
+
+<p class="text-body-md text-on-surface-variant mb-6 flex-1">
+    E-commerce mobile application featuring clean UI, dynamic product listings, and seamless checkout flows leveraging modern state management.
+</p>
+
+<div class="flex flex-wrap gap-2 mt-auto">
+    <span class="text-label-mono text-secondary text-xs">Flutter</span>
+    <span class="text-label-mono text-secondary text-xs">E-Commerce</span>
+    <span class="text-label-mono text-secondary text-xs">API</span>
+</div>
+
+</div>
+</div>
+
+<!-- ================= PROJECT 5 ================= -->
+<div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col animate-on-scroll animate-fade-up">
+
+<div class="p-8 flex-1 flex flex-col">
+
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl accent-primary">movie</span>
+
+<div class="flex gap-4">
+    <a href="https://github.com/fathyyoussef1310/MoviesApp" target="_blank">
+        <span class="material-symbols-outlined">code</span>
+    </a>
+</div>
+</div>
+
+<h3 class="text-headline-md text-on-surface mb-3">Movies App</h3>
+
+<p class="text-body-md text-on-surface-variant mb-6 flex-1">
+    A movie discovery app integrated with TMDB API. Features searching, detailed views, and infinite scrolling using Bloc pattern.
+</p>
+
+<div class="flex flex-wrap gap-2 mt-auto">
+    <span class="text-label-mono text-secondary text-xs">Flutter</span>
+    <span class="text-label-mono text-secondary text-xs">Bloc</span>
+    <span class="text-label-mono text-secondary text-xs">TMDB API</span>
+</div>
+
+</div>
+</div>
+
+<!-- ================= PROJECT 6 ================= -->
+<div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col animate-on-scroll animate-fade-up">
+
+<div class="p-8 flex-1 flex flex-col">
+
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl accent-primary">mosque</span>
+
+<div class="flex gap-4">
+    <a href="https://github.com/fathyyoussef1310/IslamiApp1Route" target="_blank">
+        <span class="material-symbols-outlined">code</span>
+    </a>
+</div>
+</div>
+
+<h3 class="text-headline-md text-on-surface mb-3">Islami App</h3>
+
+<p class="text-body-md text-on-surface-variant mb-6 flex-1">
+    A comprehensive Islamic application featuring prayer times, Qibla direction, and Azkar with a beautifully crafted dark/light mode UI.
+</p>
+
+<div class="flex flex-wrap gap-2 mt-auto">
+    <span class="text-label-mono text-secondary text-xs">Flutter</span>
+    <span class="text-label-mono text-secondary text-xs">Localization</span>
+    <span class="text-label-mono text-secondary text-xs">Audio</span>
+</div>
+
+</div>
+</div>
+
+<!-- ================= PROJECT 7 ================= -->
+<div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col animate-on-scroll animate-fade-up">
+
+<div class="p-8 flex-1 flex flex-col">
+
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl accent-primary">menu_book</span>
+
+<div class="flex gap-4">
+    <a href="https://github.com/fathyyoussef1310/SpotifyApp" target="_blank">
+        <span class="material-symbols-outlined">code</span>
+    </a>
+</div>
+</div>
+
+<h3 class="text-headline-md text-on-surface mb-3">Spotify App</h3>
+
+<p class="text-body-md text-on-surface-variant mb-6 flex-1">
+    Music streaming UI inspired by Spotify with smooth navigation and modern design principles.
+</p>
+
+<div class="flex flex-wrap gap-2 mt-auto">
+    <span class="text-label-mono text-secondary text-xs">Flutter</span>
+    <span class="text-label-mono text-secondary text-xs">UI Design</span>
+    <span class="text-label-mono text-secondary text-xs">API</span>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+<!-- Certificates Section -->
+<section class="py-section-gap-mobile lg:py-section-gap-desktop relative section-spy" id="certificates">
+<div class="mb-16 animate-on-scroll animate-fade-up" style="opacity: 0;">
+<h2 class="text-headline-md text-on-surface mb-4 flex items-center gap-4">
+<span class="text-label-mono accent-primary">04.</span> Certifications
+                <div class="h-px bg-white/10 flex-1 ml-4"></div>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="glass-panel p-8 rounded-xl cert-card animate-on-scroll flex items-center gap-6 animate-fade-up h-full w-full" style="opacity: 0;">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-3xl">workspace_premium</span>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-surface mb-1">Flutter Development</h3>
+<p class="text-body-md text-on-surface-variant mb-2">Route Academy</p>
+<p class="text-label-mono text-secondary text-sm">Comprehensive training in Flutter &amp; Dart</p>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-xl cert-card animate-on-scroll flex items-center gap-6 animate-fade-up h-full w-full" style="opacity: 0;">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-3xl">badge</span>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-surface mb-1">Software Engineering Internship</h3>
+<p class="text-body-md text-on-surface-variant mb-2">Word Of Mouth</p>
+<p class="text-label-mono text-secondary text-sm">Practical experience in mobile development</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="py-section-gap-mobile lg:py-section-gap-desktop relative section-spy" id="experience">
+<div class="mb-16 animate-on-scroll animate-fade-up" style="opacity: 0;">
+<h2 class="text-headline-md text-on-surface mb-4 flex items-center gap-4">
+<span class="text-label-mono accent-primary">05.</span> Experience
+                <div class="h-px bg-white/10 flex-1 ml-4"></div>
+</h2>
+</div>
+<div class="relative border-l border-white/10 ml-4 md:ml-6 space-y-12 pb-8">
+<!-- Item 1 -->
+<div class="relative pl-8 md:pl-12 animate-on-scroll animate-fade-up" style="opacity: 0;">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary shadow-[0_0_10px_rgba(243,78,58,0.8)]"></div>
+<div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+<h3 class="text-headline-md text-on-surface text-[24px]">Flutter Developer Intern</h3>
+<span class="text-label-mono text-primary mt-1 md:mt-0 glass-panel px-3 py-1 rounded">Word Of Mouth</span>
+</div>
+<p class="text-body-lg text-on-surface-variant mb-4 font-medium">Software Engineering Internship</p>
+<p class="text-body-md text-on-surface-variant">
+                    Contributed to building mobile applications utilizing Flutter. Gained hands-on experience in implementing responsive UI, connecting RESTful APIs, and working within an agile team environment to deliver features on schedule.
+                </p>
+</div>
+<!-- Item 2 -->
+<div class="relative pl-8 md:pl-12 animate-on-scroll animate-fade-up" style="opacity: 0;">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-surface-container-high border-2 border-primary"></div>
+<div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+<h3 class="text-headline-md text-on-surface text-[24px]">ICPC Trainer</h3>
+<span class="text-label-mono text-primary mt-1 md:mt-0 glass-panel px-3 py-1 rounded">HTI</span>
+</div>
+<p class="text-body-lg text-on-surface-variant mb-4 font-medium">Competitive Programming</p>
+<p class="text-body-md text-on-surface-variant">
+                    Mentored and trained students in data structures, algorithms, and advanced problem-solving techniques using C++. Prepared teams for national and regional programming contests, fostering a strong competitive programming community.
+                </p>
+</div>
+</div>
+</section>
+<!-- Achievements Section -->
+<section class="py-section-gap-mobile lg:py-section-gap-desktop relative section-spy" id="achievements">
+<div class="mb-16 animate-on-scroll animate-fade-up" style="opacity: 0;">
+<h2 class="text-headline-md text-on-surface mb-4 flex items-center gap-4">
+<span class="text-label-mono accent-primary">06.</span> Achievements
+                <div class="h-px bg-white/10 flex-1 ml-4"></div>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+<div class="glass-panel p-8 rounded-xl achievement-card animate-on-scroll animate-fade-up" style="opacity: 0;">
+<div class="material-symbols-outlined text-5xl text-primary mb-4">groups</div>
+<h3 class="text-display-xl-mobile text-on-surface mb-2">Team Lead</h3>
+<p class="text-body-md text-on-surface-variant">Led development on HTI-LMS</p>
+</div>
+<div class="glass-panel p-8 rounded-xl achievement-card animate-on-scroll animate-fade-up" style="opacity: 0;">
+<div class="material-symbols-outlined text-5xl text-primary mb-4">military_tech</div>
+<h3 class="text-display-xl-mobile text-on-surface mb-2">ECPC '23 &amp; '24</h3>
+<p class="text-body-md text-on-surface-variant">Participant in Egyptian Collegiate Programming Contest</p>
+</div>
+<div class="glass-panel p-8 rounded-xl achievement-card animate-on-scroll animate-fade-up" style="opacity: 0;">
+<div class="material-symbols-outlined text-5xl text-primary mb-4">check_circle</div>
+<h3 class="text-display-xl-mobile text-on-surface mb-2">Completed</h3>
+<p class="text-body-md text-on-surface-variant">Word Of Mouth Internship</p>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-gap-mobile lg:py-section-gap-desktop relative section-spy mb-20" id="contact">
+<div class="mb-16 text-center animate-on-scroll animate-fade-up" style="opacity: 0;">
+<h2 class="text-label-mono accent-primary mb-4">07. What's Next?</h2>
+<h3 class="text-display-xl-mobile lg:text-display-xl text-on-surface mb-6">Get In Touch</h3>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                I'm currently looking for new opportunities. Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
+            </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Contact Info -->
+<div class="animate-on-scroll animate-fade-up" style="opacity: 0;">
+<div class="glass-panel p-8 rounded-xl h-full flex flex-col justify-center">
+<div class="space-y-8">
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-on-surface">Location</h4>
+<p class="text-body-md text-on-surface-variant">El-Shorouk, Cairo, Egypt</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-on-surface">Email</h4>
+<p class="text-body-md text-on-surface-variant">fathyyousef896@gmail.com</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary">phone</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-on-surface">Phone / WhatsApp</h4>
+<p class="text-body-md text-on-surface-variant">01118412983<br>01147951382</p>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-white/10 flex gap-4">
+<a class="w-12 h-12 rounded-full glass-panel flex items-center justify-center hover:bg-primary/20 hover:border-primary transition-all text-on-surface hover:text-primary" href="#"><span class="material-symbols-outlined">link</span></a>
+<a class="w-12 h-12 rounded-full glass-panel flex items-center justify-center hover:bg-primary/20 hover:border-primary transition-all text-on-surface hover:text-primary" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="btn-primary flex-1 rounded-full flex items-center justify-center gap-2 font-bold text-label-mono"
+   href="https://wa.me/201118412983"
+   target="_blank">
+    WhatsApp Me 
+    <span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Contact Form -->
+<div class="glass-panel p-8 rounded-xl animate-on-scroll animate-fade-up" style="opacity: 0;">
+<form class="space-y-6"
+      action="mailto:fathyyoussef896@gmail.com"
+      method="POST"
+      enctype="text/plain">
+<div>
+<label class="block text-label-mono text-on-surface-variant mb-2" for="name">Name</label>
+<input class="w-full bg-surface-container-high border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="name" placeholder="John Doe" type="text">
+</div>
+<div>
+<label class="block text-label-mono text-on-surface-variant mb-2" for="email">Email</label>
+<input class="w-full bg-surface-container-high border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="email" placeholder="john@example.com" type="email">
+</div>
+<div>
+<label class="block text-label-mono text-on-surface-variant mb-2" for="message">Message</label>
+<textarea class="w-full bg-surface-container-high border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" id="message" placeholder="Hello..." rows="4"></textarea>
+</div>
+<button class="w-full btn-primary py-4 rounded-lg font-bold text-label-mono flex items-center justify-center gap-2" type="submit">
+                        Send Message <span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-10 border-t border-white/5 bg-surface-container-lowest dark:bg-surface-container-lowest flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-label-mono text-on-secondary-fixed-variant">Designed &amp; Developed by Youssef Fathy Mohamed</div>
+<div class="flex gap-6">
+<a class="text-label-mono text-on-secondary-fixed-variant hover:text-primary transition-all" href="#home">Home</a>
+<a class="text-label-mono text-on-secondary-fixed-variant hover:text-primary transition-all" href="#projects">Projects</a>
+</div>
+</footer>
+</main>
+<script>
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('scroll-progress').style.width = scrolled + '%';
+    });
+
+    // Custom Cursor Glow
+    const cursorGlow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    // Add interactive class to links for cursor
+    const interactives = document.querySelectorAll('a, button, input, textarea');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorGlow.style.background = 'radial-gradient(circle, rgba(243, 78, 58, 0.3) 0%, rgba(0,0,0,0) 70%)';
+            cursorGlow.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorGlow.style.background = 'radial-gradient(circle, rgba(243, 78, 58, 0.15) 0%, rgba(0,0,0,0) 70%)';
+            cursorGlow.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+    });
+
+    // Intersection Observer for Reveal Animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const animObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll, .project-card, .skill-card, .achievement-card, .cert-card').forEach(el => {
+        if(!el.classList.contains('animate-fade-up')) {
+            el.style.opacity = '0';
+            animObserver.observe(el);
+        }
+    });
+
+    // Scroll Spy for Sidebar Active Link Highlight
+    const sections = document.querySelectorAll('.section-spy');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-target') === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    // Trigger scroll spy on load
+    window.dispatchEvent(new Event('scroll'));
+</script>
+
+
+</body></html>
